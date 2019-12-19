@@ -1,8 +1,11 @@
-<p>login-form works!</p>
-
-
 <div class="login-page">
   <div class="form">
+    <form class='login-form' [formGroup]="loginForm" (ngSubmit)="login()">
+      <input type='text' placeholder="Username" class='form-control' formControlName="username" name="username" />
+      <input type='password' placeholder="Password" class='form-control' formControlName="password" name="password"/>
+      <input type="submit" value="Submit"/>
+      <p class="message">Not Registerd? <a routerLink="/register">Create An Account</a></p>
+    </form>
 
   </div>
 </div>
