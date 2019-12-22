@@ -1,3 +1,4 @@
+// import { User } from './models/user';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +14,11 @@ import { UserService } from './_services/user.service';
 import { AuthGuard } from './server/authGuard';
 import { JwtInterceptorProvider } from './server/interceptor';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
+// import { User } from './backend/models/user';
 
 
 
@@ -21,7 +27,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
     AppComponent,
     HeaderComponent,
     LoginFormComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    ProfileComponent,
+    UserListComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+//    User
   ],
   providers: [
     AuthGuard,

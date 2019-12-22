@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 8080;
 const url = 'mongodb://localhost/athenaum';
-const User = require('./model/user');
+// const User = require('./model/user');
 
 const app = express()
   .use(cors())

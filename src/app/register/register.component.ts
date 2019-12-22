@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  async register(){
+  async register() {
     //   const user = new User({       // course is an object of type Course (lowercase)
     //   username: this.registerForm.get('username').value,
     //   password: this.registerForm.get('password').value,

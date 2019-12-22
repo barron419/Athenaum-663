@@ -1,7 +1,9 @@
-var config = require('config.json');
 var express = require('express');
 var router = express.Router();
-var userService = require('services/user.service');
+var userService = require('./../services/user.service');
+var connectionString = 'mongodb://localhost:27017/athenaum';
+var apiUrl = 'http://localhost:4000';
+var secret = 'SeCrEtIsAWorD';
 
 // routes
 router.post('/authenticate', authenticate);

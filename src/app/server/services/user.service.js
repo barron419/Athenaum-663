@@ -1,11 +1,13 @@
-var config = require('config.json');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
-var mongo = require('mongoskin');
-var db = mongo.db(config.connectionString, { native_parser: true });
-db.bind('users');
+var mongoose = require('mongoose');
+var connectionString = 'mongodb://localhost:27017/athenaum';
+var apiUrl = 'http://localhost:4000';
+var secret = 'SeCrEtIsAWorD';
+var db = mongoose.connect(connectionString, { native_parser: true });
+
 
 var service = {};
 
@@ -31,7 +33,7 @@ function authenticate(username, password) {
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                token: jwt.sign({ sub: user._id }, config.secret)
+                token: jwt.sign({ sub: user._id }, secret)
             });
         } else {
             // authentication failed
@@ -153,7 +155,7 @@ function update(_id, userParam) {
         }
 
         db.users.update(
-            { _id: mongo.helper.toObjectID(_id) },
+            { _id: mongoose.helper.toObjectID(_id) },
             { $set: set },
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
@@ -169,7 +171,7 @@ function _delete(_id) {
     var deferred = Q.defer();
 
     db.users.remove(
-        { _id: mongo.helper.toObjectID(_id) },
+        { _id: mongooose.helper.toObjectID(_id) },
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 

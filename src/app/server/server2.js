@@ -4,14 +4,18 @@ var app = express();
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
-var config = require('config.json');
+const mongoose = require('mongoose');
+var connectionString = 'mongodb://localhost:27017/athenaum';
+var apiUrl = 'http://localhost:4000';
+var secret = 'SeCrEtIsAWorD';
+
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(expressJwt({
-    secret: config.secret,
+    secret: secret,
     getToken: function (req) {
         if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
             return req.headers.authorization.split(' ')[1];
